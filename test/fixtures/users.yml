@@ -2,4 +2,10 @@ jason:
   first_name: "first"
   last_name: "last"
   email: "email@email.com"
-  profile_name: "hoge"
+  profile_name: "jasonseifer"
+
+jim:
+  first_name: "first"
+  last_name: "last"
+  email: "jim@email.com"
+  profile_name: "jim"
