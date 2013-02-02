@@ -1,11 +1,17 @@
 jason:
-  first_name: "first"
-  last_name: "last"
+  first_name: "Jason"
+  last_name: "Seifer"
   email: "email@email.com"
   profile_name: "jasonseifer"
 
 jim:
-  first_name: "first"
-  last_name: "last"
+  first_name: "Jim"
+  last_name: "Hoskins"
   email: "jim@email.com"
   profile_name: "jim"
+
+mike:
+  first_name: "Mike"
+  last_name: "The Flog"
+  email: "mike@email.com"
+  profile_name: "miketheflog"
