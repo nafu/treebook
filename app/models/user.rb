@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
   					:first_name, :last_name, :profile_name
   # attr_accessible :title, :body
-  
+
   validates :first_name, presence: true
 
   validates :last_name, presence: true
@@ -26,9 +26,13 @@ class User < ActiveRecord::Base
   has_many :user_friendships
 
   has_many :friends, through: :user_friendships
-  
+
   def full_name
     first_name + " " + last_name
+  end
+
+  def to_param
+    profile_name
   end
 
   def gravatar_url

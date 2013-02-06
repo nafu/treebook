@@ -9,11 +9,13 @@ Treebook::Application.routes.draw do
     get "logout", :to => "devise/sessions#destroy", as: :logout
   end
 
+  resources :user_friendships
+
   resources :statuses
   get 'feed', to: "statuses#index", as: :feed
   root to: "statuses#index"
 
-  get '/:id', to: "profiles#show"
+  get '/:id', to: "profiles#show", as: 'profile'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
