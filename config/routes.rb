@@ -9,6 +9,14 @@ Treebook::Application.routes.draw do
     get "/logout", :to => "devise/sessions#destroy", as: :logout
   end
 
+  devise_for :users, skip: [:sessions]
+
+  devise_scope :user do
+    get "/login" => 'devise/sessions#new', as: :new_user_session
+    post "/login" => 'devise/sessions#create', as: :new_user_session
+    delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
+  end
+
   resources :user_friendships
 
   resources :statuses
