@@ -56,4 +56,12 @@ class UserFriendshipTest < ActiveSupport::TestCase
       assert users(:jason).friends.include?users(:mike)
     end
   end
+
+  context ".request" do
+    should "create two user friendships" do
+      assert_difference "UserFriendship.count", 2 do
+        UserFriendship.request(users(:jason), users(:mike))
+      end
+    end
+  end
 end
