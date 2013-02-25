@@ -8,4 +8,8 @@ class UserFriendship < ActiveRecord::Base
 
   state_machine :state, :initial => :pending do
   end
+
+  def send_request_email
+    UserNotifier.friend_requested(id).deliver
+  end
 end
