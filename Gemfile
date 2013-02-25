@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'devise'
 gem 'simple_form'
+gem 'state_machine'
 
 group :test do
 	gem 'shoulda'
