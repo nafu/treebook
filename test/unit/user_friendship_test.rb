@@ -49,5 +49,11 @@ class UserFriendshipTest < ActiveSupport::TestCase
         @user_friendship.send_acceptance_email
       end
     end
+
+    should "include the friend in the list of friends" do
+      @user_friendship.accept!
+      users(:jason).friends.reload
+      assert users(:jason).friends.include?users(:mike)
+    end
   end
 end
