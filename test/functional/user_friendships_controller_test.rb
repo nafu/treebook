@@ -21,6 +21,21 @@ class UserFriendshipsControllerTest < ActionController::TestCase
       should "get the index page without error" do
         assert_response :success
       end
+
+      should "assign user_friendships" do
+        assert assigns(:user_friendships)
+      end
+
+      should "display friend's names" do
+        assert_match /Pending/, response.body
+        assert_match /Active/, response.body
+      end
+
+      should "display pending information on a pending friendship" do
+        assert_select "#user_friendship_#{@friendship1.id}" do
+          assert_select "em", "Friendship is pending."
+        end
+      end
     end
   end
 

@@ -2,6 +2,7 @@ class UserFriendshipsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
+		@user_friendships = current_user.user_friendships.all
 	end
 
 	def new
