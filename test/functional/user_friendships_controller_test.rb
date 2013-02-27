@@ -180,4 +180,25 @@ class UserFriendshipsControllerTest < ActionController::TestCase
       end
     end
   end
+
+  context "#edit" do
+    context "when not logged in" do
+      should "redirect to the login page" do
+        get :edit, id: 1
+        assert_response :redirect
+      end
+    end
+
+    context "when logged in" do
+      setup do
+        @user_friendship = create(:pending_user_friendship, user: users(:jason))
+        sign_in users(:jason)
+      end
+
+      should "get edit and return success" do
+        get :edit, id: @user_friendship
+        assert_response :success
+      end
+    end
+  end
 end

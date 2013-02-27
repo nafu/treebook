@@ -41,4 +41,8 @@ class UserFriendshipsController < ApplicationController
 		end
 		redirect_to user_friendship_path
 	end
+
+	def edit
+
+	end
 end
