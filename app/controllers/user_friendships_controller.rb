@@ -33,6 +33,12 @@ class UserFriendshipsController < ApplicationController
 	end
 
 	def accept
-
+		@user_friendship = current_user.user_friendships.find(params[:id])
+		if @user_friendship.accept!
+			flash[:success] = "You are now friends with #{@user_friendship.friend.first_name}"
+		else
+			flash[:error] = "That friendship could not be accepted."
+		end
+		redirect_to user_friendship_path
 	end
 end
