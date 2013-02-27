@@ -1,14 +1,15 @@
-<% if @friend %>
-  <h1><%= @friend.full_name %></h1>
+<div class="page-header">
+  <h1>Viewing Friendship</h1>
+</div>
 
-  <p>Do you really want to friend <%= @friend.full_name %>?</p>
-
-  <%= form_for @user_friendship, method: :post do  |form| %>
-    <div class="form form-actions">
-      <%= form.hidden_field :friend_id, value: @friend.profile_name %>
-      <%= submit_tag "Yes, Add Friend", class: 'btn btn-primary' %>
-      <%= link_to "Cancel", profile_path(@friend), class: 'btn' %>
-    </div>
-  <% end %>
-
+<% if @user_friendship.requested? %>
+  <h3>Do you really want to be friends with <%= @friend.first_name %>?</h3>
 <% end %>
+
+<div class="form form-actions">
+  <% if @user_friendship.requested? %>
+      <%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do  |form| %>
+      <%= submit_tag "Accept Friendship", class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+</div>

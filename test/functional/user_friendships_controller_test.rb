@@ -193,11 +193,19 @@ class UserFriendshipsControllerTest < ActionController::TestCase
       setup do
         @user_friendship = create(:pending_user_friendship, user: users(:jason))
         sign_in users(:jason)
+        get :edit, id: @user_friendship
       end
 
       should "get edit and return success" do
-        get :edit, id: @user_friendship
         assert_response :success
+      end
+
+      should "assign to user_friendship" do
+        assert assigns(:user_friendship)
+      end
+
+      should "assign to friend" do
+        assert assigns(:friend)
       end
     end
   end
