@@ -31,4 +31,8 @@ class UserFriendshipsController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
+	def accept
+
+	end
 end
