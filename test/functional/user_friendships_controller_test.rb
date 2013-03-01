@@ -186,6 +186,11 @@ class UserFriendshipsControllerTest < ActionController::TestCase
       should "have a flash success message" do
         assert_equal "You are now friends with #{@user_friendship.friend.first_name}", flash[:success]
       end
+
+      should "redirect to user_friendships index" do
+        assert_response :redirect
+        assert_redirected_to user_friendships_path
+      end
     end
   end
 
