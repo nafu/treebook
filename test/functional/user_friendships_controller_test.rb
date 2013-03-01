@@ -116,6 +116,14 @@ class UserFriendshipsControllerTest < ActionController::TestCase
         end
       end
 
+      context "successfully" do
+        should "create two user friendship objects" do
+          assert_difference "UserFriendship.count", 2 do
+            post :create, user_friendship: { friend_id: users(:mike).profile_name }
+          end
+        end
+      end
+
       context "with a valid friend_id" do
         setup do
           post :create, user_friendship: {friend_id: users(:mike)}
@@ -143,7 +151,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
         should "set the flash success message" do
           assert flash[:success]
-          assert_equal "You are now friends with #{users(:mike).full_name}", flash[:success]
+          assert_equal "Friend request sent.", flash[:success]
         end
       end
     end
