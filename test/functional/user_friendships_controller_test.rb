@@ -168,7 +168,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        @user_friendship = create(:pending_user_friendship, user: users(:jason))
+        @user_friendship = UserFriendship.request users(:jason), users(:mike)
         sign_in users(:jason)
         put :accept, id: @user_friendship
         @user_friendship.reload
