@@ -8,6 +8,19 @@ class UserFriendshipDecorator < Draper::Decorator
   #     helpers.content_tag :span, class: 'time' do
   #       source.created_at.strftime("%a %m/%d/%y")
   #     end
-  #   end
+  #
+
+  def friendship_state
+    model.state.titleize
+  end
+
+  def sub_message
+    case model.state
+    when 'pending'
+      "Do you really want to be friends with #{model.friend.first_name}?"
+    when 'accepted'
+      "You are friends with #{model.friend.first_name}."
+    end
+  end
 
 end
